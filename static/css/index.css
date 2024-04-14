@@ -1,0 +1,183 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #252527;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #f4f4f4;
+    animation: fade 2s infinite alternate; /* Apply the fade animation */
+}
+h2 {
+    text-align: center;
+    color: #f3f3f3;
+}
+
+div {
+    text-align: center;
+    color: #f4f4f4;
+}
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.input-row {
+    flex: 1;
+    margin-right: 10px; /* Adjust as needed */
+    margin-bottom: 10px; /* Adjust as needed */
+}
+
+.input-row label {
+    display: block;
+}
+/* Style for the history table */
+#history_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+#history_table th, #history_table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+#history_table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+#history_table tr:hover {
+    background-color: #ddd;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 50%;
+    height: 10px;
+    background: #4d92c6;
+    outline: none;
+    border-radius: 5px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #2579c9;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+    background: #45a049;
+}
+
+input[type=range]::-webkit-slider-thumb:active {
+    background: #45a049;
+}
+
+/* Style for the value display */
+#slider_value {
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Form Styles */
+form {
+    margin-bottom: 20px;
+    color: darkslategrey;
+    text-align: center;
+}
+
+textarea {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #514f4f;
+    color :darkslategrey;;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+
+
+label {
+    color: #f4f4f4;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #42b046;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #42b046;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+    background-color: #4CAF50;
+    border-bottom: 1px solid #ddd;
+    color: white;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Flash Messages */
+ul {
+    text-align: center;
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: #f0ad4e;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Media Query for Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+}
+
+
+@keyframes fade {
+    0% {
+        opacity: 0; /* Start with transparency */
+    }
+    100% {
+        opacity: 1; /* Fully visible */
+    }
+}

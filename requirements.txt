@@ -1,0 +1,5 @@
+openai
+pandas
+numpy
+psycopg2
+flask

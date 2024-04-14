@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LLM SQL Query Generator</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+</head>
+<body>
+    <h1>LLM SQL Query Generator</h1>
+    <form action="/" method="post">
+        <div>
+            <label for="Enter your prompt">Enter your prompt</label>
+            <textarea name="user_text" id="user_text" rows="4" cols="50"></textarea>
+            <label for="Enter your database schema">Enter your database schema</label>
+            <textarea name="db_schema" id="db_schema" rows="4" cols="50"></textarea>
+            <label for="Temperature of the model">Temperature of the model</label>
+            <input type="text" id="temperature" name="temperature"> 
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Generate Query">
+        </div>
+    </form>
+    
+    {% if sql_query %}
+    <form action="/execute_query" method="post">
+        <!-- Text indicating editing possibility -->
+        <div>LLM Generated Query</div><br>
+        <!-- Editable textarea for sql_query -->
+        <textarea name="query" rows="4" cols="50">{{ sql_query }}</textarea><br>
+        <!-- Human feedback score slider -->
+        <label for="feedback_score">Human Feedback Score</label>
+        <input type="range" id="feedback_score" name="feedback_score" min="0" max="100" step="1" value="0"><br>
+        <div id="slider_value">Value: 0 </div><br>
+        <div class="input-group">
+            <div class="input-row">
+                <label for="user_name">User Name</label>
+                <input type="text" id="user_name" name="user_name"> 
+            </div>
+            <div class="input-row">
+                <label for="password">Password</label>
+                <input type="text" id="password" name="password">
+            </div>
+            <div class="input-row">
+                <label for="host">Host</label>
+                <input type="text" id="host" name="host">
+            </div>
+            <div class="input-row">
+                <label for="database">Database</label>
+                <input type="text" id="database" name="database">
+            </div>
+        </div>
+        <input type="submit" value="Confirm Execution">
+    </form>
+    {% endif %}
+
+    <script>
+        // Get the slider and value display element
+        const slider = document.getElementById('feedback_score');
+        const sliderValue = document.getElementById('slider_value');
+    
+        // Update the value display when slider value changes
+        slider.addEventListener('input', function() {
+            sliderValue.textContent = 'Value: ' + this.value;
+        });
+    </script>
+
+    {% if output_tuples %}
+        <h2>Records</h2>
+        <table border="1">
+            <tr>
+                {% for column in output_tuples[0] %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+            {% for row in output_tuples[1:] %}
+                <tr>
+                    {% for value in row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+ 
+    
+</body>
+</html>
